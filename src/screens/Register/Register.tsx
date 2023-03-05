@@ -8,6 +8,7 @@
 import React, { useState } from 'react';
 import styles from './style'
 import { Text, TextInput, TouchableOpacity, View, Image} from 'react-native';
+import {Back} from '../../../src/components/index';
 
 function Register(props:any): JSX.Element {
   const [email, setEmail] = useState('');
@@ -18,16 +19,10 @@ function Register(props:any): JSX.Element {
   const [rePwdHidden, setRePwdHidden] = useState(true);
   return (
     <View style={styles.sectionContainer}>
-      <View style={styles.header}>
-        <TouchableOpacity>
-          <Image style={{}} source={require('../../assets/icons/back.png')} resizeMode='stretch' />
-        </TouchableOpacity>
-        <View style={styles.logo}>
-          <Text style={styles.highlight}>Noitro.vn</Text>
-        </View>
-      </View>
+      <Back data={props}/>
       <View style={styles.body}>
         <Text style={styles.textLogin}>Đăng Ký</Text>
+        <Image style={{width: 60, height: 60}} source={require('../../assets/icons/vmdung1-logo.png')} resizeMode='stretch' />
 
         {/* Mail */}
         <View style={styles.viewInput}>

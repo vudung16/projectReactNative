@@ -11,10 +11,6 @@ const styles = StyleSheet.create({
       color: 'white',
       fontSize: 40,
     },
-    header: {
-      width: '100%',
-      // backgroundColor: '#4D8D6E',
-    },
     body: {
       width: '100%',
       alignItems: 'center',

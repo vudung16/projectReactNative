@@ -8,6 +8,7 @@
 import React, { useState } from 'react';
 import styles from './style'
 import { Text, TextInput, TouchableOpacity, View, Image} from 'react-native';
+import { Back } from "@components/index";
 
 function Login(props:any): JSX.Element {
   const [email, setEmail] = useState('');
@@ -15,20 +16,14 @@ function Login(props:any): JSX.Element {
   const [pwdHidden, setPwdHidden] = useState(true);
   return (
     <View style={styles.sectionContainer}>
-      <View style={styles.header}>
-        <TouchableOpacity>
-          <Image style={{}} source={require('../../assets/icons/back.png')} resizeMode='stretch' />
-        </TouchableOpacity>
-        <View style={styles.logo}>
-          <Text style={styles.highlight}>Noitro.vn</Text>
-        </View>
-      </View>
+      <Back data={props}/>
       <View style={styles.body}>
         <Text style={styles.textLogin}>Đăng nhập</Text>
+        <Image style={{width: 60, height: 60}} source={require('../../assets/icons/vmdung1-logo.png')} resizeMode='stretch' />
 
         {/* Mail */}
         <View style={styles.viewInput}>
-          <Image style={styles.iconInput} source={require('../../assets/icons/mail.png')} resizeMode='stretch' />
+          <Image style={styles.iconInput} source={require('@assets/icons/mail.png')} resizeMode='stretch' />
           <TextInput 
             style={styles.textInput} 
             placeholder='Email' 
@@ -40,7 +35,7 @@ function Login(props:any): JSX.Element {
 
         {/* Password*/}
         <View style={styles.viewInput}>
-          <Image style={styles.iconInput} source={require('../../assets/icons/pass.png')} resizeMode='stretch' />
+          <Image style={styles.iconInput} source={require('@assets/icons/pass.png')} resizeMode='stretch' />
           <TextInput 
             style={styles.textInput} 
             secureTextEntry={pwdHidden ? true : false} 
@@ -50,7 +45,7 @@ function Login(props:any): JSX.Element {
             value={password}
           />
           <TouchableOpacity style={styles.showPassword} onPress={() => setPwdHidden(!pwdHidden)}>
-            <Image style={styles.iconInput} source={pwdHidden ? require('../../assets/icons/eyes-hide.png') : require('../../assets/icons/eyes-show.png')} resizeMode='stretch' />
+            <Image style={styles.iconInput} source={pwdHidden ? require('@assets/icons/eyes-hide.png') : require('@assets/icons/eyes-show.png')} resizeMode='stretch' />
           </TouchableOpacity>
         </View>
 
@@ -72,22 +67,22 @@ function Login(props:any): JSX.Element {
 
         <View style={styles.Btns}>
           <TouchableOpacity style={styles.iconBtn}>
-            <Image source={require('../../assets/icons/facebook.png')} resizeMode='contain' />
+            <Image source={require('@assets/icons/facebook.png')} resizeMode='contain' />
             <Text style={{color: 'black', fontWeight: '500', paddingLeft: 10}}>Facebook</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconBtn}>
-            <Image source={require('../../assets/icons/instagram.png')} resizeMode='contain' />
+            <Image source={require('@assets/icons/instagram.png')} resizeMode='contain' />
             <Text style={{color: 'black', fontWeight: '500', paddingLeft: 10}}>Instagram</Text>
           </TouchableOpacity>
         </View>
 
         <View style={styles.Btns}>
           <TouchableOpacity style={styles.iconBtn}>
-            <Image source={require('../../assets/icons/google.png')} resizeMode='contain' />
+            <Image source={require('@assets/icons/google.png')} resizeMode='contain' />
             <Text style={{color: 'black', fontWeight: '500', paddingLeft: 10}}>Google</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconBtn}>
-            <Image source={require('../../assets/icons/tiktok.png')} resizeMode='contain' />
+            <Image source={require('@assets/icons/tiktok.png')} resizeMode='contain' />
             <Text style={{color: 'black', fontWeight: '500', paddingLeft: 10}}>Tiktok</Text>
           </TouchableOpacity>
         </View>
