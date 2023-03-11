@@ -10,7 +10,8 @@
       "@screens/*": ["./src/screens/*"],
       "@theme/*": ["./src/theme/*"],
       "@untils/*": ["./src/untils/*"],
-      "@components/*": ["./src/components/*"]
+      "@components/*": ["./src/components/*"],
+      "@api/*": ["./src/api/*"]
     }
   },
   "exclude": ["node_modules", "dist"]

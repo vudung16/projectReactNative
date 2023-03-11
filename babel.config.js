@@ -5,6 +5,11 @@ module.exports = function (api) {
     presets: ["babel-preset-expo"],
     plugins: [
       'react-native-reanimated/plugin',
+      ["module:react-native-dotenv", {
+        "envName": "APP_ENV",
+        "moduleName": "@env",
+        "path": ".env",
+      }],
       [
         "module-resolver",
         {
@@ -17,7 +22,8 @@ module.exports = function (api) {
             screens: "./src/screens",
             theme: "./src/theme",
             untils: "./src/untils",
-            components: "./src/components"
+            components: "./src/components",
+            api: "./src/api"
           },
         },
       ],
