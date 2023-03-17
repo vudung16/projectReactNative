@@ -1,20 +1,49 @@
-import React, {useEffect } from 'react';
-import { Dimensions, Text, View, TouchableOpacity } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { Dimensions, Text, View, TouchableOpacity, Image } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { DrawerActions } from '@react-navigation/native';
 import { ScrollView } from 'react-native-gesture-handler';
 import ApiHome from '@api/Home'
 import Carousel from 'react-native-reanimated-carousel';
 import styles from './style';
+import {ProSlide} from '@base/type'
+import { Item } from 'react-native-paper/lib/typescript/components/Drawer/Drawer';
 
 const width = Dimensions.get('window').width;
 
-function HomeScreen(props: any):JSX.Element {
-  async function name() {
-    return await ApiHome.getSlide()
+function Slide() : JSX.Element {
+  const [slides, setSlides] = useState<ProSlide[]>([]);
+  const listSlide = async () => {
+    await ApiHome.getSlide().then((res) => {
+      const dataSlide = res.slide;
+      console.log(dataSlide);
+      setSlides(dataSlide);
+    });
   }
-  // let res = ApiHome.getSlide()
-  console.log(name());
+
+  useEffect(() => { listSlide(); }, []);
+
+  return (
+    <View style={{ flex: 1 }}>
+      <Carousel
+          loop
+          width={width}
+          height={width / 2}
+          autoPlay={true}
+          data={slides}
+          scrollAnimationDuration={1000}
+          onSnapToItem={(index) => console.log('current index:', index)}
+          renderItem={(info: { item: ProSlide, index: number }) => (
+              <View>
+                <Image source={{uri: info.item.image}} style={{height: 200, width: '100%'}}/>
+              </View>
+          )}
+      />
+    </View>
+  );
+  
+}
+const HomeScreen = (props: any) => {
     return (
       <ScrollView>
         <View style={styles.banner}>
@@ -23,27 +52,8 @@ function HomeScreen(props: any):JSX.Element {
               <Ionicons style={styles.reorderThree} name="reorder-three" />
             </TouchableOpacity>
           </View>
-          <View style={{ flex: 1 }}>
-              <Carousel
-                  loop
-                  width={width}
-                  height={width / 2}
-                  autoPlay={true}
-                  data={[...new Array(6).keys()]}
-                  scrollAnimationDuration={2000}
-                  renderItem={({ index }) => (
-                      <View
-                          style={{
-                              flex: 1,
-                              justifyContent: 'center',
-                          }}
-                      >
-                          <Text style={{ textAlign: 'center', fontSize: 30 }}>
-                              {index}
-                          </Text>
-                      </View>
-                  )}
-              />
+          <View>
+            <Slide />
           </View>
         </View>
       </ScrollView>

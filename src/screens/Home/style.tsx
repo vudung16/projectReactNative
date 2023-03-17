@@ -4,7 +4,8 @@ const styles = StyleSheet.create({
     
   }, 
   reorderThree: {
-    fontSize: 35
+    fontSize: 35,
+    color: '#d82e4d'
   },
   banner: {
     position: 'relative'

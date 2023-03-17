@@ -23,7 +23,8 @@ module.exports = function (api) {
             theme: "./src/theme",
             untils: "./src/untils",
             components: "./src/components",
-            api: "./src/api"
+            api: "./src/api",
+            base: "./src/base"
           },
         },
       ],
